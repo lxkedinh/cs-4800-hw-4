@@ -1,12 +1,12 @@
 package macronutrient_question;
 
 public class FactoryCreator {
-    public static FactoryCreator instance = null;
+    private static FactoryCreator instance = null;
 
     private FactoryCreator() {}
 
     public static FactoryCreator getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new FactoryCreator();
         }
 
@@ -16,9 +16,9 @@ public class FactoryCreator {
     public DietFactory createDietFactory(DietType type) {
         return switch (type) {
             case NoRestriction -> new NoRestrictionFactory();
-            case Paleo -> null;
-            case Vegan -> null;
-            case NutAllergy -> null;
+            case Paleo -> new PaleoFactory();
+            case Vegan -> new VeganFactory();
+            case NutAllergy -> new NutAllergyFactory();
         };
     }
 
