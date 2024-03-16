@@ -6,7 +6,8 @@ public class Customer {
 
     public Customer(String name, DietType type) {
         this.name = name;
-
+        DietFactory dietFactory = FactoryCreator.instance.createDietFactory(type);
+        this.diet = dietFactory.createDietPlan();
     }
 
 }

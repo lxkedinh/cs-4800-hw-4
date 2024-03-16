@@ -13,5 +13,13 @@ public class FactoryCreator {
         return instance;
     }
 
-    public
+    public DietFactory createDietFactory(DietType type) {
+        return switch (type) {
+            case NoRestriction -> new NoRestrictionFactory();
+            case Paleo -> null;
+            case Vegan -> null;
+            case NutAllergy -> null;
+        };
+    }
+
 }
